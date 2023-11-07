@@ -20,7 +20,7 @@ jobs:
         java-version: '11'
 
     - name: Build Release
-      run: ant buildReleaseUpdate
+      run: ant jar
 
     - name: Create Release
       id: create_release
