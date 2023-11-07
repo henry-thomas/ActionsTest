@@ -1,0 +1,33 @@
+name: Build Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Java
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+
+    - name: Build Release
+      run: ant buildReleaseUpdate
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
+      with:
+        tag_name: ${{ github.event.after }}
+        release_name: Release ${{ github.event.after }}
+        body: ${{ steps.build.outputs.changelog_summary }}
