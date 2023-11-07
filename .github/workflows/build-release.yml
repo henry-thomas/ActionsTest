@@ -20,7 +20,7 @@ jobs:
         java-version: '8'
 
     - name: Build Release
-      run: ant -f jar
+      run: ant jar
 
     - name: Create Release
       id: create_release
