@@ -19,15 +19,14 @@ jobs:
         distribution: 'zulu'
         java-version: '8'
 
-    - name: Build Release
-      run: ant jar
+    - name: Build and create zip
+      run: |
+        ant clean
+        ant buildReleaseUpdate
 
-    - name: Create Release
+    - name: Upload release artifact
       id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
+      uses: actions/upload-artifact@v2
       with:
-        tag_name: test2
-        release_name: Release ${{ github.event.after }}
-        body: ${{ steps.build.outputs.changelog_summary }}
+        name: release
+        path: dist/your-archive-name.zip
