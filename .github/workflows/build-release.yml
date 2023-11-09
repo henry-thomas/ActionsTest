@@ -30,8 +30,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
       with:
-          tag_name: Release
-          release_name: Release ver8.570
+          tag_name: Release2
+          release_name: Release ver8.571
           body: |
             Release notes and description here.
   
