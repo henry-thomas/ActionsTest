@@ -26,7 +26,7 @@ jobs:
 
     - name: Upload release artifact
       id: create_release
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: release
         path: dist/reelease.zip
