@@ -71,7 +71,7 @@
 
     -->
     
-    <target name="buildReleaseUpdate">
+    <target name="buildReleaseUpdate" depends="jar">
         <zip destfile="dist/reelease.zip" basedir="dist"/>
     </target>
 </project>
